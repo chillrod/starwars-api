@@ -11,3 +11,6 @@
 
 #devops-core
 [] - deploy vercel
+
+#ui-logic
+[] - display oops message when character has zero starship

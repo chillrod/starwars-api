@@ -46,7 +46,12 @@
     },
     "rules": {
       "quotes": [
+        0,
         "double"
+      ],
+      "comma-dangle": [
+        0,
+        "off"
       ]
     }
   },
