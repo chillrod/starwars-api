@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "primeicons": "^4.1.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -27,8 +28,8 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^7.0.0",
     "lint-staged": "^9.5.0",
-    "sass": "^1.39.0",
-    "sass-loader": "^12.1.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^10.0.0",
     "vue-cli-plugin-axios": "~0.0.4"
   },
   "eslintConfig": {
@@ -50,6 +51,10 @@
         "double"
       ],
       "comma-dangle": [
+        0,
+        "off"
+      ],
+      "arrow-parens": [
         0,
         "off"
       ]

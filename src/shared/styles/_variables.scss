@@ -1,0 +1,23 @@
+// colors
+
+$white: #fff;
+$black: #000002;
+$red: #ff2c2c;
+
+$gradientColor1: #0f1b3f;
+$gradientColor2: #000002;
+$bgGradient: linear-gradient(180deg, $gradientColor1, $gradientColor2);
+
+// fonts
+$regular: 300;
+$semibold: 500;
+
+// borders
+$bsm: 7px;
+
+// shadows
+$sprimary: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+body {
+  background: $bgGradient;
+}
