@@ -6,7 +6,7 @@ const actions = {
   async handleCharacters({ commit }, payload) {
     commit("setCharactersLoading", true);
     try {
-      const { data } = await apiApp.get(`/people/?page=${payload}3122`);
+      const { data } = await apiApp.get(`/people/?page=${payload}`);
 
       const { results } = data;
 
