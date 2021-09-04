@@ -6,7 +6,7 @@ const actions = {
   async handleCharacters({ commit }, payload) {
     commit("setCharactersLoading", true);
     try {
-      const { data } = await apiApp.get(`/people/?page=${payload}`);
+      const { data } = await apiApp.get(`/people/?page=${payload}3122`);
 
       const { results } = data;
 
@@ -15,7 +15,7 @@ const actions = {
       createToast("I'm sorry 😥, we failed to fetch data from Star Wars Characters", {
         hideProgressBar: true,
         type: "danger",
-        position: "top-right"
+        position: "top-center"
       });
     } finally {
       commit("setCharactersLoading", false);

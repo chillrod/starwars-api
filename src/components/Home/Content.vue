@@ -20,6 +20,7 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 import Button from "@/components/shared-components/UI/Button.vue";
 
@@ -29,13 +30,19 @@ export default {
   },
   setup() {
     const store = useStore();
+    const router = useRouter();
 
     const getCharactersLoading = computed(() => store.getters.getCharactersLoading);
 
     const handleCharactersDataFetch = async () => {
       const initialPage = 1;
 
-      await store.dispatch("handleCharacters", initialPage);
+      try {
+        await store.dispatch("handleCharacters", initialPage);
+        router.push({ name: "Characters" });
+      } catch {
+        router.push({ name: "Home" });
+      }
     };
 
     return {

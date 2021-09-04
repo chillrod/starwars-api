@@ -7,6 +7,7 @@ import store from "./store";
 
 import "@/shared/styles/reset.css";
 import "primeicons/primeicons.css";
+import "mosha-vue-toastify/dist/style.css";
 
 const app = createApp(App);
 
