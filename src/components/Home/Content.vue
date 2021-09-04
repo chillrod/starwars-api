@@ -6,20 +6,43 @@
       in one place
     </h1>
     <div class="home__container--ctabtn">
-      <Button buttonText="Get Started" buttonIcon="pi pi-angle-right" />
+      <Button
+        :disabled="getCharactersLoading"
+        buttonText="Get Started"
+        buttonIcon="pi pi-angle-right"
+        @click="handleCharactersDataFetch"
+      />
     </div>
   </section>
   <section class="home__background" />
 </template>
 
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
+
 import Button from "@/components/shared-components/UI/Button.vue";
 
 export default {
   components: {
     Button
   },
-  setup() {}
+  setup() {
+    const store = useStore();
+
+    const getCharactersLoading = computed(() => store.getters.getCharactersLoading);
+
+    const handleCharactersDataFetch = async () => {
+      const initialPage = 1;
+
+      await store.dispatch("handleCharacters", initialPage);
+    };
+
+    return {
+      handleCharactersDataFetch,
+      getCharactersLoading
+    };
+  }
 };
 </script>
 

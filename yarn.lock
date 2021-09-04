@@ -6168,6 +6168,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5, mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+mosha-vue-toastify@^1.0.21:
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/mosha-vue-toastify/-/mosha-vue-toastify-1.0.21.tgz#36bd9a1a5aa82bf5509275bbd9ef3fba909e2814"
+  integrity sha512-rSJxCwwqNnzDuqMu39qefMZAcWr0fz38HPVrOtIZmauTvI9gBYz/PGTP2RKxbXLCVV3txouvMbDjiATRJLiQXQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"

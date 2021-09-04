@@ -28,21 +28,29 @@ export default {
 
 <style lang="sass">
 .nav__container
-  display: grid
-  padding: 0 2em
-
-  margin-top: 2em
+  padding: 1em 2em
   margin-bottom: 4em
 
-  @media(min-width: 776px)
-      display: flex
-      align-items: center
-      justify-content: space-between
+  background: $gradientColor1
+
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+  position: sticky
+  z-index: 10
+  top: 0
 
 .nav__container--logo
-  justify-self: center
+  cursor: pointer
+  transition: 250ms ease-in-out
+  &:hover
+    transform: scale(1.1)
 
 .nav__container--link
   color: $white
   text-decoration: none
+
+  &:hover
+    text-decoration: underline
 </style>

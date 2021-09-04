@@ -1,7 +1,11 @@
 <template>
-  <button class="ui__button">
-    <span class="ui__button--text">{{ buttonText }}</span>
-    <i class="ui__button-icon" v-if="buttonIcon" :class="buttonIcon"></i>
+  <button type="button" class="ui__button" :disabled="disabled">
+    <span class="ui__button--text">{{ disabled ? "Loading... " : buttonText }}</span>
+    <i
+      class="ui__button-icon"
+      v-if="buttonIcon"
+      :class="disabled ? 'pi pi-spin pi-spinner' : buttonIcon"
+    ></i>
   </button>
 </template>
 
@@ -15,6 +19,10 @@ export default {
     buttonIcon: {
       type: String,
       default: ""
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   setup() {}
@@ -41,6 +49,10 @@ export default {
 
   &:hover
     transform: translateY(-5%)
+
+  &:disabled
+    background: $disabledRed
+    cursor: wait
 
   .ui__button--text
     font-size: 1.2rem
