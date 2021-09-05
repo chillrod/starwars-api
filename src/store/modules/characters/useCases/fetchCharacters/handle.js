@@ -8,9 +8,13 @@ const fetchCharactersActions = {
         `/people/?page=${page}&search=${search.toLocaleLowerCase()}`
       );
 
-      const { results } = data;
+      const { results, count } = data;
 
       commit("setCharacters", { characters: results, search });
+
+      commit("setTotalCharacters", count);
+
+      commit("setCurrentPage", page);
     } catch (err) {
       throw new Error(err);
     } finally {

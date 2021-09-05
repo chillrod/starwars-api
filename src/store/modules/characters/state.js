@@ -1,9 +1,10 @@
 const state = {
   characters: [],
-  characterImages: [],
   characterStarships: [],
   character: {},
-  isCharacterLoading: false
+  isCharacterLoading: false,
+  currentPage: 1,
+  totalCharacters: 0
 };
 
 export default state;

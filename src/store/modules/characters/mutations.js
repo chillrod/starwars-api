@@ -38,6 +38,14 @@ const mutations = {
     });
 
     return addImagesToRelatedCharacters;
+  },
+
+  setCurrentPage(state, payload) {
+    state.currentPage = payload;
+  },
+
+  setTotalCharacters(state, payload) {
+    state.totalCharacters = payload;
   }
 };
 
