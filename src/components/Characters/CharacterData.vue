@@ -1,6 +1,8 @@
 <template>
   <div class="character__data--container">
-    <div class="character__data--image" />
+    <div class="character__data--image">
+      <img :src="image.image" :alt="image.alt" />
+    </div>
     <h2 class="character__data--name">
       {{ name }}
     </h2>
@@ -28,12 +30,16 @@ export default {
       type: String,
       required: true
     },
+    image: {
+      type: Object,
+      required: true
+    },
     gender: {
       type: String,
       required: true
     },
     starships: {
-      type: Array,
+      type: String,
       required: true
     },
     hair: {
@@ -56,28 +62,38 @@ export default {
 
 <style lang="sass" scoped>
 .character__data--container
-  background: $white
   border-radius: $bsm
-  box-shadow: $sprimary
   transition: 250ms ease-in-out
   margin: 1.5em 1em
+
+  background: rgba( $white, 0.85 )
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )
+  backdrop-filter: blur( 4px )
+  -webkit-backdrop-filter: blur( 4px )
 
   display: grid
   grid-template-columns: 1fr 3.5fr
   grid-template-rows: 1fr .5fr 1fr 1fr
 
   &:hover
-    transform: translateY(-2%)
+    transform: translateY(-.8%)
 
 .character__data--image
   grid-row: 1 / -1
   width: 90px
   background: $gradientColor1
-  clip-path: circle(120px at -30px 105px)
-  margin-right: .5em
+  clip-path: circle(120px at -30px 115px)
+  padding-right: .5em
+
+  img
+    border-radius: $bsm
+    object-fit: cover
+    height: 100%
+    width: 100%
+    object-position: center
 
 .character__data--name
-  font-size: 1.5rem
+  font-size: 1.8rem
   padding-top: 1em
   color: $gradientColor1
 
@@ -117,6 +133,9 @@ export default {
   font-size: 1.2rem
   color: $gradientColor1
   background: none
+
+  &:hover
+    transform: scale(1.1)
 
 .character__actions-icon
   margin-left: .5em

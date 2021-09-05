@@ -1,6 +1,7 @@
 const state = {
   characters: [],
   characterStarships: [],
+  characterImages: [],
   character: {},
   isCharacterLoading: false,
   currentPage: 1,

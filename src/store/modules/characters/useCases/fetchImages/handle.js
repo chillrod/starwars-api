@@ -8,16 +8,13 @@ const fetchImagesActions = {
     const parsedCharacterName = name.toLocaleLowerCase().replace(" ", "%20");
 
     try {
-      // TODO - remover, feito para não gastar a api
-      if (name === "afsjfgajajgagakfasagjaskfaskfoakgaoskfka") {
-        const { data } = await axios.post(`https://starwars-image.herokuapp.com/`, {
-          name: parsedCharacterName
-        });
+      const { data } = await axios.post(`https://starwars-image.herokuapp.com/`, {
+        name: parsedCharacterName
+      });
 
-        const { image, alt } = data;
+      const { image, alt } = data;
 
-        commit("setCharacterImages", { image, alt });
-      }
+      commit("setCharacterImages", [{ image, alt }, name]);
     } catch (err) {
       throw new Error(err);
     } finally {

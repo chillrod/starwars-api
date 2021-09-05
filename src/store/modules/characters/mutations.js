@@ -29,15 +29,17 @@ const mutations = {
   },
 
   setCharacterImages(state, payload) {
-    const { image, alt } = payload;
+    const [image, characterName] = payload;
 
-    const addImagesToRelatedCharacters = state.characters.forEach(character => {
-      const pushImages = { ...character, characterImg: { image, alt } };
+    const relateCharacterToImage = { image, characterName };
 
-      return pushImages;
-    });
+    const checkIfAlreadyExists = state.characterImages.some(
+      characterImage =>
+        characterImage.image.alt === relateCharacterToImage.image.alt &&
+        characterImage.characterName === relateCharacterToImage.characterName
+    );
 
-    return addImagesToRelatedCharacters;
+    if (!checkIfAlreadyExists) state.characterImages.push(relateCharacterToImage);
   },
 
   setCurrentPage(state, payload) {
