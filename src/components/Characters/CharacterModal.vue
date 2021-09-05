@@ -25,13 +25,7 @@
       <span class="single__character--data__title">
         General Information
       </span>
-      <p class="single__character--data__starships">{{ getCharacter.starships }}</p>
-    </div>
-    <div class="single__character--data__actions">
-      <button class="single__character--action">
-        Like
-        <i class="pi pi-star-o single__character--icon"></i>
-      </button>
+      <p class="single__character--data__starships">Starships: {{ getCharacter.starships }}</p>
     </div>
   </div>
 </template>
@@ -58,21 +52,33 @@ export default {
   display: grid
   grid-template-columns: 2.5fr 2fr
   grid-template-rows: .3fr .3fr 1fr
+  transform: scale(1.2)
+  padding: 1.5em
+  overflow-x: hidden
 
   @media (min-width: 776px)
     width: 500px
+    padding: 3em
 
 .single__character--data__image
-  grid-column: 2
   grid-row: 1 / -1
   background: $black
-  clip-path: circle(800px at 800px 190px)
   width: max-content
+  object-fit: cover
+
+  clip-path: circle(250px at 250px 180px)
+
+  @media (min-width: 776px)
+    clip-path: circle(500px at 550px 200px)
 
   img
+    width: 180%
     height: 160%
-    object-fit: cover
-    object-postion: top center
+    padding-right: 2em
+    object-position: top center
+
+    @media (min-width: 776px)
+      width: 100%
 
 .single__character--data__name
     font-size: 2.5rem
@@ -93,7 +99,7 @@ export default {
   opacity: .8
 
 .single__character--data__info
-  margin: 1em 0
+  line-height: 2
   text-transform: capitalize
 
   span
@@ -113,7 +119,6 @@ export default {
 
 .single__character--data__starships
   margin: 1em 0
-
 .single__character--action
   cursor: pointer
   border: none

@@ -16,7 +16,7 @@ export default {
   setup() {
     const store = useStore();
 
-    const isCharacterLoading = computed(() => store.getters.isCharacterLoading);
+    const isCharacterLoading = computed(() => store.getters.getCharactersLoading);
 
     return {
       isCharacterLoading
@@ -42,6 +42,7 @@ export default {
 
   &:hover
     transform: translateY(-5%)
+    background: $gradientColor1
 
 .load__action--container-text
   color: $white

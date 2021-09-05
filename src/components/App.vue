@@ -30,6 +30,10 @@ export default {
     background-size: 90%
     background-position: 0 150%
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, sans-serif
+  font-family: 'Roboto Mono'
   line-height: 1.3
+
+  button, p, h1, h2
+    font-family: 'Roboto Mono'
+    line-height: 1.5
 </style>

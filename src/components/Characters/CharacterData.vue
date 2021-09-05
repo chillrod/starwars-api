@@ -1,30 +1,32 @@
 <template>
-  <div class="character__data--container">
+  <div class="character__data--container" v-if="image.alt !== 'Fallback image'">
     <div class="character__data--image">
       <img :src="image.image" :alt="image.alt" />
     </div>
     <h2 class="character__data--name">
-      {{ name }}
+      {{ fallBackIfLoading(name) }}
     </h2>
-    <span class="character__data--gender"> Gender: {{ gender }} </span>
-    <p class="character__data--starships">Starships: {{ starships }}</p>
+    <span class="character__data--gender"> Gender: {{ fallBackIfLoading(gender) }} </span>
+    <p class="character__data--starships">Starships: {{ fallBackIfLoading(starships) }}</p>
     <div class="character__data--actions">
       <button class="character__actions" @click="setShowCharacter">
         See more
         <i class="pi pi-external-link character__actions-icon"></i>
       </button>
-      <button class="character__actions">
-        Like
-        <i class="pi pi-star-o character__actions-icon"></i>
-      </button>
     </div>
+  </div>
+  <div v-else>
+    <CharacterSkeleton />
   </div>
 </template>
 
 <script>
 import { useStore } from "vuex";
 
+import CharacterSkeleton from "@/components/shared-components/UI/CharacterSkeleton.vue";
+
 export default {
+  components: { CharacterSkeleton },
   props: {
     name: {
       type: String,
@@ -71,7 +73,13 @@ export default {
       await store.dispatch("setCharacterModal", true);
     };
 
-    return { setShowCharacter };
+    const fallBackIfLoading = entity => {
+      if (!entity.length) return "Loading";
+
+      return entity;
+    };
+
+    return { setShowCharacter, fallBackIfLoading };
   }
 };
 </script>
@@ -81,6 +89,7 @@ export default {
   border-radius: $bsm
   transition: 250ms ease-in-out
   margin: 1.5em 1em
+  animation: $animation
 
   background: rgba( $white, 0.85 )
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )
@@ -88,8 +97,7 @@ export default {
   -webkit-backdrop-filter: blur( 4px )
 
   display: grid
-  grid-template-columns: 1fr 3.5fr
-
+  grid-template-columns: 2fr 3.5fr
   grid-template-rows: 1fr .5fr 1fr 1fr
 
   &:hover
@@ -97,22 +105,30 @@ export default {
 
 .character__data--image
   grid-row: 1 / -1
-  width: 90px
   background: $gradientColor1
-  clip-path: circle(120px at -30px 115px)
-  padding-right: .5em
+  clip-path: circle(150px at -25px 115px)
+  padding-right: .9em
+  width: max-content
+
+  @media (min-width: 776px)
+    clip-path: circle(210px at -75px 115px)
 
   img
     border-radius: $bsm
     object-fit: cover
     height: 100%
-    width: 100%
-    object-position: center
+    width: 115%
+    object-position: top left
 
 .character__data--name
-  font-size: 1.8rem
-  padding-top: 1em
+  font-size: 1.5rem
+  padding-top: .8em
   color: $gradientColor1
+  display: -webkit-box
+  text-overflow: ellipsis
+  -webkit-line-clamp: 1
+  -webkit-box-orient: vertical
+  overflow: hidden
 
 .character__data--gender
   font-size: .9rem
@@ -129,7 +145,7 @@ export default {
     -webkit-box-orient: vertical
     overflow: hidden
     width: 95%
-    max-height: 40px
+    height: 50px
 
 .character__data--actions
   grid-row: 4
@@ -143,10 +159,8 @@ export default {
   cursor: pointer
   border: none
 
-  padding: .3em
-  margin-right: 1em
-  display: grid
-  grid-template-columns: 1fr .5fr
+  display: flex
+  align-items: center
 
   font-size: 1.2rem
   color: $gradientColor1
@@ -157,4 +171,22 @@ export default {
 
 .character__actions-icon
   margin-left: .5em
+</style>
+
+<style scoped>
+.character__data--container {
+  animation: slidein;
+  animation-duration: 500ms;
+}
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
 </style>

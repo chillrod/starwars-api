@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap");
 // colors
 
 $white: #fff;
@@ -6,19 +7,20 @@ $lightBlack: #363636;
 $red: #ff2c2c;
 $disabledRed: #ff5151;
 
-$gradientColor1: #0f1b3f;
+$gradientColor1: #1d3398;
 $gradientColor2: #000002;
 $bgGradient: linear-gradient(180deg, $gradientColor1, $gradientColor2);
 
 // fonts
 $regular: 300;
 $semibold: 500;
-
 // borders
 $bsm: 7px;
 
 // shadows
 $sprimary: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+$animation: slidein;
 
 body {
   background: $bgGradient;

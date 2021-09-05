@@ -6,7 +6,6 @@
       src="@/shared/assets/stardata-logo.svg"
       alt="Star Data - Your favorite characters all in one place"
     />
-    <router-link class="nav__container--link" to="/favorites">Your Favorites</router-link>
   </nav>
 </template>
 
@@ -35,7 +34,7 @@ export default {
 
   display: flex
   align-items: center
-  justify-content: space-between
+  justify-content: center
 
   position: sticky
   z-index: 10
@@ -44,6 +43,7 @@ export default {
 .nav__container--logo
   cursor: pointer
   transition: 250ms ease-in-out
+
   &:hover
     transform: scale(1.1)
 

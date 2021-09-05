@@ -78,6 +78,12 @@ export default {
     font-size: 3.5rem
     font-weight: $regular
 
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )
+    backdrop-filter: blur( 50px )
+    -webkit-backdrop-filter: blur( 20px )
+    border-radius: $bsm
+    padding: .5em
+
     @media (max-width: 776px)
       font-size: 2.3rem
 
@@ -87,14 +93,13 @@ export default {
 
 .home__background
 
-  height: 50vh
+  height: 80vh
   background-image: url('../../shared/assets/backgrounds/death-star.svg')
   background-repeat: no-repeat
   background-size: 100%
   background-position: top center
 
   @media(min-width: 776px)
-    padding-bottom: 25em
-    background-size: 70%
-    background-position: top center
+    background-size: 100%
+    background-position: 50% 20%
 </style>
