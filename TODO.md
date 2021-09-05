@@ -2,9 +2,8 @@
 [x] - list all star wars characters
 [x] - on character detail return the starships related to the character
 [x] - paginate api
-[] - search
-[] - characters image
-[] - join characters, starships and images
+[x] - characters image
+[x] - join characters, starships and images
 
 #user-core
 [x] - good ui/ux

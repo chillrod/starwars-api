@@ -26,6 +26,9 @@ export default {
           characterName: character.name,
           starships: character.starships
         });
+        await store.dispatch("handleCharactersImages", {
+          name: character.name
+        });
       });
 
       const getCharacterStarships = computed(() => store.getters.getCharacterStarships);

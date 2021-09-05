@@ -2,13 +2,12 @@
 /* eslint-disable implicit-arrow-linebreak */
 const mutations = {
   setCharacters(state, { characters }) {
-    // terminar
-    const checkIfAlreadyExists = characters.filter(
+    const addOnlyNewCharacters = characters.filter(
       filteredCharacters =>
         !state.characters.some(alreadyExists => alreadyExists.url === filteredCharacters.url)
     );
 
-    state.characters.push(...checkIfAlreadyExists);
+    state.characters.push(...addOnlyNewCharacters);
   },
   setCharacterStarships(state, payload) {
     const [starship, characterName] = payload;
@@ -25,6 +24,22 @@ const mutations = {
   },
   setCharactersLoading(state, payload) {
     state.isCharacterLoading = payload;
+  },
+  setCharacterImages(state, payload) {
+    console.log("🚀 ~ file: mutations.js ~ line 29 ~ setCharacterImages ~ payload", payload);
+    const { image, alt } = payload;
+
+    const addImagesToRelatedCharacters = state.characters.forEach(character => {
+      const pushImages = { ...character, characterImg: { image, alt } };
+
+      console.log(
+        "🚀 ~ file: mutations.js ~ line 34 ~ setCharacterImages ~ pushImages",
+        pushImages
+      );
+      return pushImages;
+    });
+
+    return addImagesToRelatedCharacters;
   }
 };
 

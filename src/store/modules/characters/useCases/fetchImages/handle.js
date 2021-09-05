@@ -1,25 +1,23 @@
 /* eslint-disable implicit-arrow-linebreak */
 import axios from "axios";
-import { serpApiKey } from "@/services/api/serpApi";
-
-const searchParams = querySearch =>
-  `?&tbm=isch&engine=google&q=${querySearch}&api_key=${serpApiKey}`;
 
 const fetchImagesActions = {
-  async handleCharactersImages({ commit }, payload) {
+  async handleCharactersImages({ commit }, { name }) {
     commit("setCharactersLoading", true);
 
-    const parseWhiteSpace = payload.replace(" ", "%20");
+    const parsedCharacterName = name.toLocaleLowerCase().replace(" ", "%20");
+
     try {
-      const { data } = await axios.get(
-        `https://serpapi.com/search.json${searchParams(parseWhiteSpace)}`
-      );
+      // TODO - remover, feito para não gastar a api
+      if (name === "afsjfgajajgagakfasagjaskfaskfoakgaoskfka") {
+        const { data } = await axios.post(`https://starwars-image.herokuapp.com/`, {
+          name: parsedCharacterName
+        });
 
-      const getFirstImage = data.image_results[0];
+        const { image, alt } = data;
 
-      const { original } = getFirstImage;
-
-      commit("setCharacterImages", { name: payload, src: original });
+        commit("setCharacterImages", { image, alt });
+      }
     } catch (err) {
       throw new Error(err);
     } finally {
