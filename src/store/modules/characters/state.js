@@ -3,6 +3,7 @@ const state = {
   characterStarships: [],
   characterImages: [],
   character: {},
+  showCharacter: false,
   isCharacterLoading: false,
   currentPage: 1,
   totalCharacters: 0

@@ -2,7 +2,7 @@
   <h1 class="character__content--ctatext">
     May the 4th be with you
   </h1>
-  <section class="character__content-container" v-if="contentLoad">
+  <section class="character__content-container">
     <article class="character__content--data" v-for="(character, id) in characters" :key="id">
       <CharacterData
         :name="character.name"
@@ -22,19 +22,26 @@
   <section class="character__content--load-more" ref="loadButton">
     <Load @click="fetchNextCharacters" />
   </section>
+  <Dialog v-model:visible="characterDetail" @hide="resetCharacter">
+    <CharacterModal />
+  </Dialog>
 </template>
 
 <script>
 import { computed, watchEffect, ref } from "vue";
 import { useStore } from "vuex";
 
+import Dialog from "primevue/dialog";
 import CharacterData from "./CharacterData.vue";
+import CharacterModal from "./CharacterModal.vue";
 import Load from "@/components/shared-components/UI/Load.vue";
 
 export default {
   components: {
     CharacterData,
-    Load
+    CharacterModal,
+    Load,
+    Dialog
   },
   setup() {
     const store = useStore();
@@ -44,6 +51,7 @@ export default {
     const images = ref([]);
     const contentLoad = ref(false);
     const loadButton = ref(null);
+    const characterDetail = ref(false);
 
     const getCharacters = computed(() => store.getters.getCharacters);
 
@@ -96,6 +104,11 @@ export default {
       }
     };
 
+    const resetCharacter = async () => {
+      await store.dispatch("setCharacterDetail", {});
+      await store.dispatch("setCharacterModal", false);
+    };
+
     watchEffect(async () => {
       const getStarships = computed(() => store.getters.getCharacterStarships);
       const { value: starshipValues } = getStarships;
@@ -103,23 +116,24 @@ export default {
       const getImages = computed(() => store.getters.getCharacterImages);
       const { value: imageValues } = getImages;
 
+      const getShowCharacter = computed(() => store.getters.getShowCharacter);
+      const { value: showCharacter } = getShowCharacter;
+
       characterValues.forEach(async character => {
-        contentLoad.value = false;
         await store.dispatch("handleStarships", {
           characterName: character.name,
           starships: character.starships
         });
-        const fetchImage = await store.dispatch("handleCharactersImages", {
+
+        await store.dispatch("handleCharactersImages", {
           name: character.name
         });
-        contentLoad.value = true;
-
-        return fetchImage;
       });
 
       characters.value = characterValues;
       starships.value = starshipValues;
       images.value = imageValues;
+      characterDetail.value = showCharacter;
     });
 
     return {
@@ -129,7 +143,9 @@ export default {
       fetchNextCharacters,
       filterImages,
       contentLoad,
-      loadButton
+      loadButton,
+      characterDetail,
+      resetCharacter
     };
   }
 };

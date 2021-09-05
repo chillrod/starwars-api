@@ -3,6 +3,14 @@ const getters = {
     return state.characters;
   },
 
+  getCharacter(state) {
+    return state.character;
+  },
+
+  getShowCharacter(state) {
+    return state.showCharacter;
+  },
+
   getCharacterImages(state) {
     return state.characterImages;
   },

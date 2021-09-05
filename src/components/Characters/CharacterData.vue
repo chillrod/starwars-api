@@ -6,12 +6,10 @@
     <h2 class="character__data--name">
       {{ name }}
     </h2>
-    <span class="character__data--gender">
-      {{ gender }}
-    </span>
-    <p class="character__data--starships">{{ starships }}</p>
+    <span class="character__data--gender"> Gender: {{ gender }} </span>
+    <p class="character__data--starships">Starships: {{ starships }}</p>
     <div class="character__data--actions">
-      <button class="character__actions">
+      <button class="character__actions" @click="setShowCharacter">
         See more
         <i class="pi pi-external-link character__actions-icon"></i>
       </button>
@@ -24,6 +22,8 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+
 export default {
   props: {
     name: {
@@ -54,8 +54,24 @@ export default {
       type: String
     }
   },
-  setup() {
-    return {};
+  setup(props) {
+    const store = useStore();
+
+    const setShowCharacter = async () => {
+      await store.dispatch("setCharacterDetail", {
+        name: props.name,
+        image: props.image,
+        starships: props.starships,
+        gender: props.gender,
+        hair: props.hair,
+        skin: props.skin,
+        height: props.height
+      });
+
+      await store.dispatch("setCharacterModal", true);
+    };
+
+    return { setShowCharacter };
   }
 };
 </script>
@@ -73,6 +89,7 @@ export default {
 
   display: grid
   grid-template-columns: 1fr 3.5fr
+
   grid-template-rows: 1fr .5fr 1fr 1fr
 
   &:hover
@@ -101,6 +118,7 @@ export default {
   font-size: .9rem
   color: $lightBlack
   margin-bottom: 1em
+  text-transform: captalize
 
 .character__data--starships
     font-size: 1rem
@@ -120,13 +138,13 @@ export default {
 
   display: flex
   width: 95%
-  justify-content: space-between
 
 .character__actions
   cursor: pointer
   border: none
 
   padding: .3em
+  margin-right: 1em
   display: grid
   grid-template-columns: 1fr .5fr
 

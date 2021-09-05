@@ -3,7 +3,7 @@
     <p class="load__action--container-text">{{ isCharacterLoading ? "Loading" : "Load more" }}</p>
     <i
       class="load__action--container-icon"
-      :class="!isCharacterLoading ? 'pi pi-spin pi-spinner' : ''"
+      :class="isCharacterLoading ? 'pi pi-spin pi-spinner' : ''"
     />
   </button>
 </template>
@@ -27,13 +27,21 @@ export default {
 
 <style lang="sass">
 .load__action--container
+  cursor: pointer
+  transition: 250ms ease-in-out
+
   background: none
   border: none
   box-shadow: $sprimary
+
+  margin-top: 5em
   padding: 1em 3em
 
   display: flex
   align-items: center
+
+  &:hover
+    transform: translateY(-5%)
 
 .load__action--container-text
   color: $white

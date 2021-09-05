@@ -10,6 +10,14 @@ const mutations = {
     state.characters.push(...addOnlyNewCharacters);
   },
 
+  setCharacter(state, payload) {
+    state.character = payload;
+  },
+
+  showCharacter(state, payload) {
+    state.showCharacter = payload;
+  },
+
   setCharacterStarships(state, payload) {
     const [starship, characterName] = payload;
 
