@@ -1,18 +1,41 @@
 <template>
-  <p>{{ data }}</p>
+  <p>{{ name }}</p>
+  <p>{{ gender }}</p>
+  <p>{{ starships }}</p>
+  <p>{{ hair }}</p>
+  <p>{{ skin }}</p>
+  <p>{{ height }}</p>
   <button @click="loadMore">click</button>
-  <input type="text" v-model="searchQuery" />
 </template>
 
 <script>
-import { watchEffect, ref } from "vue";
+import { ref } from "vue";
 import { useStore } from "vuex";
 
 export default {
   props: {
-    data: {
+    name: {
+      type: String,
+      required: true
+    },
+    gender: {
+      type: String,
+      required: true
+    },
+    starships: {
       type: Array,
-      required: false
+      required: true
+    },
+    hair: {
+      type: String,
+      required: true
+    },
+    skin: {
+      type: String,
+      required: true
+    },
+    height: {
+      type: String
     }
   },
   setup() {
@@ -23,16 +46,6 @@ export default {
       await store.dispatch("handleCharacters", { page: 2 });
     };
 
-    watchEffect(async () => {
-      if (searchQuery.value === "") {
-        await store.dispatch("handleCharacters", { page: 1, search: "Reset Search" });
-      }
-
-      if (searchQuery.value) {
-        await store.dispatch("handleCharacters", { search: searchQuery.value });
-      }
-    });
-
     return {
       loadMore,
       searchQuery
@@ -41,4 +54,7 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+p
+  color: $white
+</style>

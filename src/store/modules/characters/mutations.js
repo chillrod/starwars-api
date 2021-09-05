@@ -9,6 +9,7 @@ const mutations = {
 
     state.characters.push(...addOnlyNewCharacters);
   },
+
   setCharacterStarships(state, payload) {
     const [starship, characterName] = payload;
 
@@ -22,20 +23,17 @@ const mutations = {
 
     if (!checkIfAlreadyExists) state.characterStarships.push(relateCharacterToStarship);
   },
+
   setCharactersLoading(state, payload) {
     state.isCharacterLoading = payload;
   },
+
   setCharacterImages(state, payload) {
-    console.log("🚀 ~ file: mutations.js ~ line 29 ~ setCharacterImages ~ payload", payload);
     const { image, alt } = payload;
 
     const addImagesToRelatedCharacters = state.characters.forEach(character => {
       const pushImages = { ...character, characterImg: { image, alt } };
 
-      console.log(
-        "🚀 ~ file: mutations.js ~ line 34 ~ setCharacterImages ~ pushImages",
-        pushImages
-      );
       return pushImages;
     });
 

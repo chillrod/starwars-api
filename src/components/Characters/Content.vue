@@ -1,9 +1,22 @@
 <template>
-  <CharacterData />
+  <article v-for="(character, id) in characters" :key="id">
+    <CharacterData
+      :name="character.name"
+      :gender="character.gender"
+      :starships="
+        character.starships.length
+          ? filterStarships(character.name)
+          : 'Oops! This character doest not have any starships 😢'
+      "
+      :hair="character.hair_color"
+      :skin="character.skin_color"
+      :height="character.height"
+    />
+  </article>
 </template>
 
 <script>
-import { computed, ref, watchEffect } from "vue";
+import { computed, watchEffect, ref } from "vue";
 import { useStore } from "vuex";
 
 import CharacterData from "./CharacterData.vue";
@@ -14,14 +27,26 @@ export default {
   },
   setup() {
     const store = useStore();
-    const currentCharacters = ref();
-    const currentStarships = ref();
+
+    const characters = ref([]);
+    const starships = ref([]);
+
+    const getCharacters = computed(() => store.getters.getCharacters);
+    const { value: characterValues } = getCharacters;
+
+    const filterStarships = characterName => {
+      const pushStarships = starships.value.filter(
+        starship => starship.characterName === characterName
+      );
+
+      return pushStarships;
+    };
 
     watchEffect(async () => {
-      const getCharacters = computed(() => store.getters.getCharacters);
-      const { value: getCharactersValue } = getCharacters;
+      const getStarships = computed(() => store.getters.getCharacterStarships);
+      const { value: starshipValues } = getStarships;
 
-      getCharactersValue.forEach(async character => {
+      characterValues.forEach(async character => {
         await store.dispatch("handleStarships", {
           characterName: character.name,
           starships: character.starships
@@ -31,21 +56,11 @@ export default {
         });
       });
 
-      const getCharacterStarships = computed(() => store.getters.getCharacterStarships);
-      const { value: getCharacterStarshipsValue } = getCharacterStarships;
-
-      const joinedCharactersAndStarships = [getCharactersValue, getCharacterStarshipsValue];
-
-      const [characters, starships] = joinedCharactersAndStarships;
-
-      currentCharacters.value = characters;
-      currentStarships.value = starships;
+      characters.value = characterValues;
+      starships.value = starshipValues;
     });
 
-    return {
-      currentCharacters,
-      currentStarships
-    };
+    return { characters, filterStarships };
   }
 };
 </script>

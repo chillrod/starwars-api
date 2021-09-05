@@ -4,6 +4,7 @@
 [x] - paginate api
 [x] - characters image
 [x] - join characters, starships and images
+[ ] - block img api to call if name already fetch (serp-api limit to 100 calls/month only)
 
 #user-core
 [x] - good ui/ux
