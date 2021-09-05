@@ -37,8 +37,6 @@ export default {
 
   display: flex
   align-items: center
-  grid-template-columns: 1fr .5fr
-  gap: 1em
 
   background: $red
   color: $white
@@ -55,6 +53,7 @@ export default {
     cursor: wait
 
   .ui__button--text
+    margin-right: 1em
     font-size: 1.2rem
     font-weight: $regular
 

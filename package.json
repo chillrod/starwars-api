@@ -58,6 +58,10 @@
       "arrow-parens": [
         0,
         "off"
+      ],
+      "object-curly-newline": [
+        0,
+        "never"
       ]
     }
   },

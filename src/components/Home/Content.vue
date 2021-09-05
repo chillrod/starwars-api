@@ -22,6 +22,9 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 
+import { createToast } from "mosha-vue-toastify";
+
+import toastErrors from "@/utils/ToastMessages/Error";
 import Button from "@/components/shared-components/UI/Button.vue";
 
 export default {
@@ -38,10 +41,14 @@ export default {
       const initialPage = 1;
 
       try {
-        await store.dispatch("handleCharacters", initialPage);
+        await store.dispatch("handleCharacters", { page: initialPage });
         router.push({ name: "Characters" });
-      } catch {
-        router.push({ name: "Home" });
+      } catch (err) {
+        createToast(toastErrors("Characters"), {
+          hideProgressBar: true,
+          type: "danger",
+          position: "top-center"
+        });
       }
     };
 
