@@ -89,7 +89,7 @@ export default {
   border-radius: $bsm
   transition: 250ms ease-in-out
   margin: 1.5em 1em
-  height: 300px
+  height: 320px
   animation: $animation
   padding: 1em
 
