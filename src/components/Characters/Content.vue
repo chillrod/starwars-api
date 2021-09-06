@@ -32,8 +32,12 @@
 <script>
 import { computed, watchEffect, ref } from "vue";
 import { useStore } from "vuex";
+import { createToast } from "mosha-vue-toastify";
 
 import Dialog from "primevue/dialog";
+
+import toastInfo from "@/utils/ToastMessages/Info";
+import toastErrors from "@/utils/ToastMessages/Error";
 
 import CharacterData from "./CharacterData.vue";
 import CharacterModal from "./CharacterModal.vue";
@@ -114,8 +118,23 @@ export default {
       const { value: currentPage } = getCurrentPage;
       const { value: totalCharacters } = getTotalCharacters;
 
-      if (characters.value.length !== totalCharacters) {
+      if (characters.value.length === totalCharacters) {
+        createToast(toastInfo("Characters"), {
+          hideProgressBar: true,
+          type: "info",
+          position: "top-center"
+        });
+        return;
+      }
+
+      try {
         await store.dispatch("handleCharacters", { page: currentPage + 1 });
+      } catch (err) {
+        createToast(toastErrors("Characters"), {
+          hideProgressBar: true,
+          type: "danger",
+          position: "top-center"
+        });
       }
     };
 
