@@ -25,7 +25,7 @@ h1
     -webkit-backdrop-filter: blur( 20px )
     border-radius: $bsm
     padding: .5em
-    margin-bottom: 1em
+    margin-bottom: .5em
 
     @media (max-width: 776px)
         font-size: 2.2rem
