@@ -1,6 +1,6 @@
 <template>
   <div class="character__skeleton--container">
-    <Skeleton borderRadius="15" width="100%" height="200px" />
+    <Skeleton borderRadius="15" width="100%" height="320px" />
   </div>
 </template>
 
