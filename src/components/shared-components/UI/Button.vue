@@ -40,10 +40,10 @@ export default {
 
   background: $red
   color: $white
+  border-radius: $bsm
   box-shadow: $sprimary
 
-  padding: 1em 2em
-  border-radius: $bsm
+  padding: .8em 3em
 
   &:hover
     transform: translateY(-5%)

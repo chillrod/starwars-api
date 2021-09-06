@@ -1,7 +1,5 @@
 <template>
-  <h1 class="character__content--ctatext">
-    May the 4th be with you
-  </h1>
+  <PageTitle class="character__content--ctatext" :text="'Hello little Jedi'" />
   <section
     v-if="characters"
     class="character__content-container"
@@ -36,16 +34,19 @@ import { computed, watchEffect, ref } from "vue";
 import { useStore } from "vuex";
 
 import Dialog from "primevue/dialog";
+
 import CharacterData from "./CharacterData.vue";
 import CharacterModal from "./CharacterModal.vue";
 import Load from "@/components/shared-components/UI/Load.vue";
+import PageTitle from "@/components/shared-components/UI/PageTitle.vue";
 
 export default {
   components: {
     CharacterData,
     CharacterModal,
     Load,
-    Dialog
+    Dialog,
+    PageTitle
   },
   setup() {
     const store = useStore();
@@ -164,19 +165,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.character__content--ctatext
-  color: $white
-  text-align: center
-  font-size: 3.5rem
-  font-weight: $regular
-
-  width: 95%
-  margin: 0 auto
-  margin-bottom: 1em
-
-  @media (max-width: 776px)
-    font-size: 2.3rem
-
 .character__content-container
   display: flex
   flex-wrap: wrap
@@ -185,6 +173,10 @@ export default {
 
   max-width: 900px
   margin: 0 auto
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )
+  backdrop-filter: blur( 50px )
+  -webkit-backdrop-filter: blur( 20px )
+  border-radius: $bsm
 
   &.character__content-hide
     opacity: .3

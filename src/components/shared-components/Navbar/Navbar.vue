@@ -29,8 +29,7 @@ export default {
 .nav__container
   padding: 1em 2em
   margin-bottom: 4em
-
-  background: $gradientColor1
+  backdrop-filter: blur( 20px )
 
   display: flex
   align-items: center

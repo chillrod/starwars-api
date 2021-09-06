@@ -6,13 +6,10 @@
 
 <style lang="sass" scoped>
 .footer__text
-    background: $black
-
     text-align: center
     color: $white
     font-size: 1.1rem
 
-    margin-top: 4em
     padding: 3em 0
     max-height: 50px
 </style>

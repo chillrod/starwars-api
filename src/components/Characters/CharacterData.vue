@@ -89,7 +89,9 @@ export default {
   border-radius: $bsm
   transition: 250ms ease-in-out
   margin: 1.5em 1em
+  height: 300px
   animation: $animation
+  padding: 1em
 
   background: rgba( $white, 0.85 )
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )
@@ -104,31 +106,28 @@ export default {
     transform: translateY(-.8%)
 
 .character__data--image
+  grid-column: 2
   grid-row: 1 / -1
-  background: $gradientColor1
-  clip-path: circle(150px at -25px 115px)
-  padding-right: .9em
-  width: max-content
+  clip-path: circle(150px at 200px 115px)
+  height: 250px
+  align-self: center
 
   @media (min-width: 776px)
-    clip-path: circle(210px at -75px 115px)
+    clip-path: circle(210px at 220px 115px)
 
   img
     border-radius: $bsm
     object-fit: cover
+    object-position: top center
     height: 100%
-    width: 115%
-    object-position: top left
+    width: 100%
 
 .character__data--name
+  grid-row: 1
+  grid-column: 1
   font-size: 1.5rem
   padding-top: .8em
   color: $gradientColor1
-  display: -webkit-box
-  text-overflow: ellipsis
-  -webkit-line-clamp: 1
-  -webkit-box-orient: vertical
-  overflow: hidden
 
 .character__data--gender
   font-size: .9rem
@@ -139,13 +138,10 @@ export default {
 .character__data--starships
     font-size: 1rem
     grid-row: 3
-    display: -webkit-box
-    text-overflow: ellipsis
-    -webkit-line-clamp: 2
     -webkit-box-orient: vertical
     overflow: hidden
     width: 95%
-    height: 50px
+    height: 60px
 
 .character__data--actions
   grid-row: 4

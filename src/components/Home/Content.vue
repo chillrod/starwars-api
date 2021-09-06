@@ -1,10 +1,9 @@
 <template>
   <section class="home__container">
-    <h1 class="home__container--ctatext">
-      Your favorite<br />
-      Star Wars characters<br />
-      in one place
-    </h1>
+    <PageTitle
+      class="home__container--ctatext"
+      :text="'Join the Dark Side<br /> in this amazing<br />Star Wars database'"
+    />
     <div class="home__container--ctabtn">
       <Button
         :disabled="getCharactersLoading"
@@ -25,23 +24,29 @@ import { useRouter } from "vue-router";
 import { createToast } from "mosha-vue-toastify";
 
 import toastErrors from "@/utils/ToastMessages/Error";
+
 import Button from "@/components/shared-components/UI/Button.vue";
+import PageTitle from "@/components/shared-components/UI/PageTitle.vue";
 
 export default {
   components: {
-    Button
+    Button,
+    PageTitle
   },
   setup() {
     const store = useStore();
     const router = useRouter();
 
     const getCharactersLoading = computed(() => store.getters.getCharactersLoading);
+    const getCharacters = computed(() => store.getters.getCharacters);
 
     const handleCharactersDataFetch = async () => {
       const initialPage = 1;
 
       try {
-        await store.dispatch("handleCharacters", { page: initialPage });
+        if (!getCharacters.value.length) {
+          await store.dispatch("handleCharacters", { page: initialPage });
+        }
         router.push({ name: "Characters" });
       } catch (err) {
         createToast(toastErrors("Characters"), {
@@ -63,8 +68,6 @@ export default {
 <style lang="sass" scoped>
 .home__container
   margin: 0 auto
-  padding-bottom: 2em
-
   display: grid
   grid-template-rows: 1fr .2fr
   justify-content: center
@@ -72,34 +75,17 @@ export default {
   @media (max-width: 776px)
     padding: 0 1em
 
-  .home__container--ctatext
-    color: $white
-    text-align: center
-    font-size: 3.5rem
-    font-weight: $regular
-
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )
-    backdrop-filter: blur( 50px )
-    -webkit-backdrop-filter: blur( 20px )
-    border-radius: $bsm
-    padding: .5em
-
-    @media (max-width: 776px)
-      font-size: 2.3rem
-
   .home__container--ctabtn
-    margin: 2em
     justify-self: center
 
 .home__background
-
-  height: 80vh
+  height: 100vh
   background-image: url('../../shared/assets/backgrounds/death-star.svg')
   background-repeat: no-repeat
   background-size: 100%
   background-position: top center
 
   @media(min-width: 776px)
-    background-size: 100%
-    background-position: 50% 20%
+    background-size: 50%
+    background-position: 50% 10%
 </style>

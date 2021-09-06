@@ -1,6 +1,6 @@
 <template>
   <div class="character__skeleton--container">
-    <Skeleton borderRadius="15" width="500px" height="200px" style="margin-bottom: 1em" />
+    <Skeleton borderRadius="15" width="100%" height="200px" />
   </div>
 </template>
 
@@ -17,5 +17,5 @@ export default {
 .character__skeleton--container
     display: grid
     place-items: center
-    margin-top: 1em
+    margin: 1em
 </style>
