@@ -38,13 +38,13 @@ executar este comando em seu Terminal
 Se estiver usando NPM
 
 ```bash
-npm run serve
+npm run start
 ```
 
 Se estiver usando Yarn
 
 ```bash
-yarn serve
+yarn start
 ```
 
 ## Estrutura do projeto
