@@ -1,24 +1,73 @@
-# starwars-frontend-inflor
+# 🚀 𝙨𝙩𝙖𝙧𝙙𝙖𝙩𝙖 - star wars characters database
 
-## Project setup
-```
-yarn install
+Este projeto faz parte do teste técnico de frontend para a Inflor
+
+## Instalação
+
+Baixe o projeto com executando em seu terminal
+
+```bash
+git clone git@github.com:chillrod/starwars-frontend-inflor.git
 ```
 
-### Compiles and hot-reloads for development
+## Para continuar, é preciso instalar algumas dependências
+
+Para isso, você pode executar estes comandos no seu Terminal
+
+Se estiver usando NPM
+
+```bash
+npm install
 ```
+
+Se estiver usando Yarn
+
+```bash
+yarn
+```
+
+## Executar o projeto
+
+Para executar o projeto você precisa conferir se as dependências foram baixadas completamente, e assim
+executar este comando em seu Terminal
+
+Se estiver usando NPM
+
+```bash
+npm run serve
+```
+
+Se estiver usando Yarn
+
+```bash
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+## Estrutura do projeto
+
+/components - Componentes do projeto e App.vue
+
+/router - Configurações do vue-router e Router
+
+/services - baseURL da API
+
+```bash
+Houve a tentativa de buscar as imagens de forma automática no Google, mas encontrei dificuldades...
+
+Criei uma API com o Cheerio para fazer web scraping no google images para consumir neste projeto
+
+Link do repositório: https://github.com/chillrod/starwars-inflor-backend
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+/shared - Assets e Estilos globais de CSS/SASS
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+/store - Configuração do VUEX
+
+- /modules - Módulos do VUEX
+  - /characters - Módulo de Characters - useCases é o equivalente a Actions do VUEX
+
+/utils - Toast message de erro na api
+
+/views - Páginas do router
+
+# 🚀 𝙨𝙩𝙖𝙧𝙙𝙖𝙩𝙖
