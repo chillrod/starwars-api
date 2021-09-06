@@ -86,6 +86,7 @@ export default {
 
 <style lang="sass" scoped>
 .character__data--container
+  background: $white
   border-radius: $bsm
   transition: 250ms ease-in-out
   margin: 1.5em 1em
@@ -93,7 +94,6 @@ export default {
   animation: $animation
   padding: 1em
 
-  background: rgba( $white, 0.85 )
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )
   backdrop-filter: blur( 4px )
   -webkit-backdrop-filter: blur( 4px )
