@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import store from "@/store";
 
 import Home from "@/views/HomeContents/Home.vue";
-import Favorites from "@/views/FavoriteContents/Favorites.vue";
 import Characters from "@/views/CharacterContents/Characters.vue";
 
 const routes = [
@@ -10,12 +9,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
-  },
-  {
-    path: "/favorites",
-    name: "Favorites",
-    component: Favorites,
-    meta: { characterRoutes: true }
   },
   {
     path: "/characters",
