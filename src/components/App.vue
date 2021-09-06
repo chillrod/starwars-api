@@ -21,9 +21,8 @@ export default {
 <style lang="sass">
 #app__container
   background-image: url('../shared/assets/backgrounds/stars.svg')
-  background-repeat: repeat-x
   background-position: 0 90%
-  background-size: 120%
+  background-size: 100%
 
   @media(min-width: 776px)
     background-size: 100%
