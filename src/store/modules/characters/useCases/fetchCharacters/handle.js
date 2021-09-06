@@ -1,7 +1,7 @@
 import apiApp from "@/services/api/apiApp";
 
 const fetchCharactersActions = {
-  async handleCharacters({ commit }, { page = 1, search = "" }) {
+  async handleCharacters({ commit, dispatch }, { page = 1, search = "" }) {
     commit("setCharactersLoading", true);
     try {
       const { data } = await apiApp.get(
@@ -9,6 +9,17 @@ const fetchCharactersActions = {
       );
 
       const { results, count } = data;
+
+      results.forEach(async character => {
+        await dispatch("handleStarships", {
+          characterName: character.name,
+          starships: character.starships
+        });
+
+        await dispatch("handleCharactersImages", {
+          name: character.name
+        });
+      });
 
       commit("setCharacters", { characters: results, search });
 

@@ -2,7 +2,6 @@ import apiApp from "@/services/api/apiApp";
 
 const actions = {
   async handleStarships({ commit }, payload) {
-    commit("setCharactersLoading", true);
     try {
       const { starships, characterName } = payload;
       starships.forEach(async characterStarships => {

@@ -21,7 +21,7 @@
       />
     </article>
   </section>
-  <section class="character__content--load-more" ref="loadButton">
+  <section class="character__content--load-more">
     <Load @click="fetchNextCharacters" />
   </section>
   <Dialog v-model:visible="characterDetail" @hide="resetCharacter" @show="hideBackgroundContent">
@@ -55,7 +55,6 @@ export default {
     const starships = ref([]);
     const images = ref([]);
     const contentLoad = ref(false);
-    const loadButton = ref(null);
     const characterDetail = ref(false);
     const hideBackground = ref(false);
 
@@ -130,17 +129,6 @@ export default {
       const getShowCharacter = computed(() => store.getters.getShowCharacter);
       const { value: showCharacter } = getShowCharacter;
 
-      characterValues.forEach(async character => {
-        await store.dispatch("handleStarships", {
-          characterName: character.name,
-          starships: character.starships
-        });
-
-        await store.dispatch("handleCharactersImages", {
-          name: character.name
-        });
-      });
-
       characters.value = characterValues;
       starships.value = starshipValues;
       images.value = imageValues;
@@ -154,7 +142,6 @@ export default {
       fetchNextCharacters,
       filterImages,
       contentLoad,
-      loadButton,
       characterDetail,
       resetCharacter,
       hideBackgroundContent,
