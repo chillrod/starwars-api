@@ -1,5 +1,5 @@
 <template>
-  <PageTitle class="character__content--ctatext" :text="'Hello little Jedi'" />
+  <PageTitle class="character__content--ctatext" :text="'Hello little Sith'" />
   <section
     v-if="characters"
     class="character__content-container"
