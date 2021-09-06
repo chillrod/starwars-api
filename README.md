@@ -2,6 +2,8 @@
 
 Este projeto faz parte do teste técnico de frontend para a Inflor
 
+Link para download do protótipo no [Adobe XD](https://xd.adobe.com/view/482df7fe-7d6d-4d66-9902-4aa16b8f09a1-1d7e/)
+
 ## Instalação
 
 Baixe o projeto com executando em seu terminal
