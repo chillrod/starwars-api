@@ -59,7 +59,7 @@ export default {
   grid-template-rows: .3fr .5fr .3fr .5fr .3fr 1fr
 
   margin-top: .5em
-  max-width: 650px
+  max-width: 550px
   padding: 1.5em
 
   transition: 250ms ease-in-out
@@ -115,4 +115,5 @@ export default {
     width: 100%
     height: 100%
     object-fit: cover
+    border-radius: $bsm
 </style>
