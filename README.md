@@ -56,7 +56,7 @@ yarn start
 /services - baseURL da API
 
 ```bash
-Houve a tentativa de buscar as imagens de forma automática no Google, mas encontrei dificuldades...
+Houve a tentativa de buscar as imagens de forma automática no Google, mas encontrei dificuldades de cors...
 
 Criei uma API com o Cheerio para fazer web scraping no google images para consumir neste projeto
 
