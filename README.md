@@ -1,7 +1,5 @@
 # 🚀 𝙨𝙩𝙖𝙧𝙙𝙖𝙩𝙖 - star wars characters database
 
-Este projeto faz parte do teste técnico de frontend para a Inflor
-
 [Live demo](https://stardata.vercel.app/)
 
 Link para download do protótipo no [Adobe XD](https://xd.adobe.com/view/482df7fe-7d6d-4d66-9902-4aa16b8f09a1-1d7e/)
